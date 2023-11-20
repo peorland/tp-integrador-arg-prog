@@ -19,7 +19,7 @@ export default function TodoApp() {
       completed: false
     }
     const temp = [...todos]
-    temp.unshift(newTodo)
+    temp.push(newTodo)
     setTodos(temp)
     setTitle('')
   }
