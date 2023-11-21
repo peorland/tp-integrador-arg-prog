@@ -2,7 +2,7 @@ body {
   background-color: blueviolet;
 }
 
-.todoContainer {
+.taskContainer {
   width: 500px;
   margin: 100px auto;
 
@@ -10,12 +10,12 @@ body {
   flex-direction: column;
 }
 
-.todoCreateForm {
+.taskCreateForm {
   display: flex;
   gap: 5px;
 }
 
-.todoInput {
+.taskInput {
   flex-grow: 1;
   width: 100%;
   padding: 10px;
@@ -31,25 +31,25 @@ body {
   padding: 10px 20px;
 }
 
-.todosContainer {
+.tasksContainer {
   display: flex;
   flex-direction: column;
   gap: 5px;
   margin-top: 10px;
 }
 
-.todo {
+.task {
   padding: 10px;
   background-color: white;
 }
 
-.todoTitle {
+.taskTitle {
   flex: 1;
   font-size: 20px;
 }
 
-.todoUpdateForm,
-.todoInfo {
+.taskUpdateForm,
+.taskInfo {
   display: flex;
   align-items: center;
   gap: 5px;

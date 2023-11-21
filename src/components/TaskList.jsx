@@ -21,8 +21,8 @@ export default function TaskList({item, onChecked, onUpdate, onDelete}) {
     }
 
     return (
-      <form className="todoUpdateForm" onSubmit={handleSubmit}>
-        <input type="text" className="todoInput" onChange={handleChange} value={newValue}/>
+      <form className="taskUpdateForm" onSubmit={handleSubmit}>
+        <input type="text" className="taskInput" onChange={handleChange} value={newValue}/>
         <button className="button" onClick={handleClickUpdateTodo}>Update</button>
       </form>
     )
@@ -37,8 +37,8 @@ export default function TaskList({item, onChecked, onUpdate, onDelete}) {
       }
     } 
     return (
-      <div className="todoInfo">
-        <span className="todoTitle">{showItem(item)}</span>
+      <div className="taskInfo">
+        <span className="taskTitle">{showItem(item)}</span>
         <input type="checkbox" checked={item.completed} onChange={() => onChecked(item.id)}/>
         <button className="button" onClick={() => setIsEdit(true)}>Edit</button>
         <button className="buttonDelete" onClick={() => onDelete(item.id)}>Delete</button>
@@ -47,7 +47,7 @@ export default function TaskList({item, onChecked, onUpdate, onDelete}) {
   }
 
   return (
-    <div className="todo">
+    <div className="task">
       {isEdit ? <FormEdit /> : <TaskItem />}
     </div>
   )

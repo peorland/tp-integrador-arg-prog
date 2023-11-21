@@ -45,12 +45,12 @@ export default function TaskForm() {
     setTodos(temp)
   }
 
-  return  <div className="todoContainer">
-    <form className="todoCreateForm" onSubmit={handleSubmit}>
-      <input onChange={handleChange} placeholder="Ingresar nueva tarea" className="todoInput" value={title}/>
-      <input onClick={handleSubmit} type="submit" value={'create todo'} className={"buttonCreate"} />
+  return  <div className="taskContainer">
+    <form className="taskCreateForm" onSubmit={handleSubmit}>
+      <input onChange={handleChange} placeholder="Ingresar nueva tarea" className="taskInput" value={title}/>
+      <input onClick={handleSubmit} type="submit" value={'Nueva Tarea'} className={"buttonCreate"} />
     </form>
-    <div className="todosContainer">
+    <div className="tasksContainer">
       {todos.map((item) => (
         <TaskList key={item.id} item={item} onChecked={handleCheckbox} onUpdate={handleUpdate} onDelete={handleDelete}/>
       ))}
