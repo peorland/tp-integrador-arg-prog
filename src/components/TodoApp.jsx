@@ -38,7 +38,7 @@ export default function TodoApp() {
   }
   return  <div className="todoContainer">
     <form className="todoCreateForm" onSubmit={handleSubmit}>
-      <input onChange={handleChange} className="todoInput" value={title}/>
+      <input onChange={handleChange} placeholder="Ingresar nueva tarea" className="todoInput" value={title}/>
       <input onClick={handleSubmit} type="submit" value={'create todo'} className={"buttonCreate"} />
     </form>
     <div className="todosContainer">
