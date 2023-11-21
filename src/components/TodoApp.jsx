@@ -17,6 +17,7 @@ export default function TodoApp() {
       id: crypto.randomUUID(),
       title: title,
       completed: false
+
     }
     const temp = [...todos]
     temp.push(newTodo)
@@ -36,6 +37,14 @@ export default function TodoApp() {
     const temp= todos.filter(item => item.id !== id)
     setTodos(temp)
   }
+
+  function handleCheckbox(id) {
+    const temp = [...todos]
+    const item = temp.find(item => item.id === id)
+    item.completed = !item.completed
+    setTodos(temp)
+  }
+
   return  <div className="todoContainer">
     <form className="todoCreateForm" onSubmit={handleSubmit}>
       <input onChange={handleChange} placeholder="Ingresar nueva tarea" className="todoInput" value={title}/>
@@ -43,7 +52,7 @@ export default function TodoApp() {
     </form>
     <div className="todosContainer">
       {todos.map((item) => (
-        <Todo key={item.id} item={item} onUpdate={handleUpdate} onDelete={handleDelete}/>
+        <Todo key={item.id} item={item} onChecked={handleCheckbox} onUpdate={handleUpdate} onDelete={handleDelete}/>
       ))}
     </div>
 
