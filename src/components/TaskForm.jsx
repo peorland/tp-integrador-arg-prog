@@ -1,8 +1,8 @@
 import { useState } from "react"
-import Todo from "./Todo";
-import "./TodoApp.css";
+import TaskList from "./TaskList";
+import "./TaskForm.css";
 
-export default function TodoApp() {
+export default function TaskForm() {
   const [title, setTitle] = useState('')
   const [todos, setTodos] = useState([])
 
@@ -52,7 +52,7 @@ export default function TodoApp() {
     </form>
     <div className="todosContainer">
       {todos.map((item) => (
-        <Todo key={item.id} item={item} onChecked={handleCheckbox} onUpdate={handleUpdate} onDelete={handleDelete}/>
+        <TaskList key={item.id} item={item} onChecked={handleCheckbox} onUpdate={handleUpdate} onDelete={handleDelete}/>
       ))}
     </div>
 

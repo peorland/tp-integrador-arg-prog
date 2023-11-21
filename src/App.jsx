@@ -1,8 +1,8 @@
-import TodoApp from "./components/TodoApp";
+import TaskForm from "./components/TaskForm";
 
 function App() {
   return (
-    <TodoApp />
+    <TaskForm />
   )
 }
 

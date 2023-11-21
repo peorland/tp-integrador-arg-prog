@@ -1,6 +1,6 @@
 import { useState } from "react"
 
-export default function Todo({item, onChecked, onUpdate, onDelete}) {
+export default function TaskList({item, onChecked, onUpdate, onDelete}) {
   const [isEdit, setIsEdit] = useState(false)
 
   function FormEdit() {
@@ -28,7 +28,7 @@ export default function Todo({item, onChecked, onUpdate, onDelete}) {
     )
   }
 
-  function TodoElement() {
+  function TaskItem() {
     function showItem(item) {
       if (item.completed) {
         return <del>{item.title}</del>
@@ -48,7 +48,7 @@ export default function Todo({item, onChecked, onUpdate, onDelete}) {
 
   return (
     <div className="todo">
-      {isEdit ? <FormEdit /> : <TodoElement />}
+      {isEdit ? <FormEdit /> : <TaskItem />}
     </div>
   )
 }
