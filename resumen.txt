@@ -1,0 +1,55 @@
+La aplicacion arranca con el componente TaskForm, que muestra un form con un input y un boton para agregar una tarea nueva.
+Este componente tiene 3 useStates: [title, setTitle], [todos, setTodos], [warningMsg, setWarningMsg]. el state title guarda
+el contenido de la tarea que se va a agregar, y es inicializado en string vacio (''). El state todos es un array de objetos
+que va a almacenar las tareas q se van agregando, es inicializado en array vacio ([]). El state warningMsg es un valor
+booleano que se va a usar para mostrar un mensaje de advertencia cuando el usuario dio enter o pulso boton de nueva tarea
+sin haber escrito nada en el campo del input. Es booleano para poder ir alternando true/false de manera que cada cambio
+de valor del estado (true/false) va a hacer que se ejecute el useEffect, donde está contenido el alert. El useEffect está
+ligado a la dependencia del cambio de estado del warningMsg.
+
+Cuando el usuario empieza a escribir en el campo del input del form, se invoca la funcion handleChange(event), que recibe como
+parametro el evento. El valor de ese evento (event.target.value) se pasa a una const y de ahi se actualiza el useState title
+con setTitle(value). Ahi se va formando la tarea nueva a medida q se va escribiendo caracteres, pero todavia no se formó
+la tarea nueva en sí, porque falta dar Enter o click en el botón Tarea Nueva.
+
+Cuando el usuario presionó Enter o click en botón Nueva Tarea, se invoca la función handleSubmit(e). En esta función pasan
+3 cosas: primera se e.preventDefault() para evitar que se conmplete el envío por defecto del form.
+Luego hay un if que hace que si title (o sea la tarea que se ingresó) está vacío (!title) se active el alert de advertencia, 
+para lo que se recurre al useEffect declarado más arriba. Para esto se cambia el estado del warningMsg con setWarningMsg, 
+pasando como parametro !warningMsg, o sea el valor opuesto al que tenia. Este cambio de valor provoca que se active el 
+useEffect porque en su definicion esta ligado a todo cambio de valor del estado warningMsg.
+Por ultimo en tercer lugar viene el else de ese if (o sea que la tarea ingresada NO es un string vacío), para lo que se 
+guarda todo en un objeto nuevo llamado newTodo (nueva tarea) que va a tener 3 propiedades: id, title y completed. La prop
+title se toma de lo que ingreso el usuario en input del form. La prop completed es booleana y se setea en false, indicando 
+que es una tarea aun sin completar. El id se genera con sistema de generacion aleatorio que les explicare mas adelante.
+Una vez creado este objeto, se hace una copia del array todos (que contiene todas las tareas que se fueron ingresando), y 
+se guarda esa copia en la const temp. Finalmente se actualiza el array todos con setTodos pasando como param la const temp.
+Lo ultimo que hace handleSubmit es resetear title a sting vacio ('') con setTitle, asi se limpia el campo de ingreso del 
+input del form, para ingresar una nueva tarea con todo limpio. Caso contrario queda grabada la tarea ultima ingresada.
+
+Despues del form, en el componente TaskForm viene un div que va a listar todas las tareas ingresadas, contenidas en el array 
+todos. Para esto hace un map del array todos, en cada paso del map pone un componente TaskList, pasandole al componente 5 
+parametros: primero el id de la tarea (item.id), despues la tarea (item), y los ultimos 3 params son funciones: la primera 
+handleCheckbox, para cuando el usuario tilda el checkbox para marcar una tarea, o la destilda. La segunda funcion es para 
+cuando el usuario edita la tarea, handleUpdate, y la tercera cuando borra la tarea, handleDelete.
+Estas funciones las recibe el componente TaskList con los nombres onChecked, onUpdate, onDelete, respectivamente. Y son 
+invocadas desde ese componente TaskList, a pesar de que estan declaradas y definidas en el componente que lo contiene, TaskForm.
+Si se fijan en TaskList (más precisamente en TaskItem, que es un componenete definido dentro de TaskList), ahi se invocan 
+las funciones onChecked (o sea handleCheckedbox) pasandosele los correspondientes parametros, y tambien se invoca la funcion 
+onDelete (o sea handleDelete) con sus correspondientes parametros. 
+
+El componente tiene un useState que se es isEdit, que va a ser true o false segun se esta por editar (modificar) o no una tarea.
+Adentro de este componente TaskList hay dos componentes: FormEdit y TaskItem. 
+FormEdit es para editar (modificar) una tarea, tiene un useState que es newValue y va a guardar la nueva tarea. Se setea 
+inicialmente con el valor item.title, o sea la tarea (item es un parametro que se paso desde TaskForm hacia TaskList).
+El componente TaskItem renderiza la tarea con un checkbox y dos botones (edit y delete, o modificar y eliminar). Para mostrar 
+la tarea recurre a la funcion showItem, en donde hay un if que define si la tarea va tachada o no, dependiendo si la prop 
+completed del item esta en true o false.
+
+Al final del TaskList esta el return del mismo, donde se que es un div que renderiza dos posibles componentes. Si isEdit es 
+true, FormEdit, si es false, TaskItem. Ese useState isEdit cambiara de valor true o false segun se tilde el checkbox, como se 
+ve en el boton Edit del return del TaskItem.
+
+Fijense que elimine el componente App porque no se usaba, y no era necesario.
+
+

@@ -20,7 +20,7 @@ export default function TaskForm() {
     e.preventDefault();
     if (!title) {
       setWarningMsg(!warningMsg);
-      //alert('La tarea está vacia...');
+      //alert('La tarea está vacia...'); <--- muestra la prescindencia del useEffect
     } else {
       const newTodo = {
         id: crypto.randomUUID(),
