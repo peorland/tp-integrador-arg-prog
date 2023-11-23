@@ -55,6 +55,7 @@ export default function TaskForm() {
 
   return (
     <div className="taskContainer">
+      <h1>Lista de Tareas</h1>
       <form className="taskCreateForm" onSubmit={handleSubmit}>
         <input
           onChange={handleChange}
@@ -65,7 +66,7 @@ export default function TaskForm() {
         <input
           onClick={handleSubmit}
           type="submit"
-          value={'Nueva Tarea'}
+          value={'Agregar'}
           className={'buttonCreate'}
         />
       </form>

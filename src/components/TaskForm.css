@@ -1,16 +1,23 @@
 body {
-  background-color: blueviolet;
+  background: linear-gradient(100deg, rgb(90, 182, 247), rgb(153, 60, 246));
 }
 
+h1 {
+  text-align: center;
+  padding: 5px;
+  font-size: 60px;
+  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
 .taskContainer {
   width: 500px;
-  margin: 100px auto;
+  margin: 10px auto;
 
   display: flex;
   flex-direction: column;
 }
 
 .taskCreateForm {
+  font-size: 17px;
   display: flex;
   gap: 5px;
 }
@@ -18,17 +25,24 @@ body {
 .taskInput {
   flex-grow: 1;
   width: 100%;
-  padding: 10px;
-  border-radius: 3px;
-  border: solid 1px #999;
+  padding: 15px;
+  border-radius: 8px;
+  border: solid 3px rgb(14, 97, 174);
+  font-size: 17px;
 }
 
 .buttonCreate {
   border: none;
-  border-radius: 3px;
-  background-color: rgb((26), 76, 169);
-  color: rgb(93, 21, 226);
-  padding: 10px 20px;
+  border-radius: 8px;
+  background-color: rgb(82, 224, 137);
+  color: rgb(7, 4, 11);
+  padding: 3px 20px;
+  font-size: 17px;
+}
+
+.buttonCreate:hover {
+  border: solid;
+  background-color: rgb(31, 182, 69);
 }
 
 .tasksContainer {
@@ -41,11 +55,13 @@ body {
 .task {
   padding: 10px;
   background-color: white;
+  border-radius: 8px;
 }
 
 .taskTitle {
   flex: 1;
   font-size: 20px;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
 
 .taskUpdateForm,
@@ -56,17 +72,32 @@ body {
 }
 
 .button {
-  border: none;
-  border-radius: 3px;
-  background-color: rgb(72, 122, 221);
-  color: white;
+  border-radius: 8px;
+  background-color: rgb(114, 194, 247);
+  color: black;
   padding: 10px 20px;
+  font-size: 17px;
+}
+
+.button:hover {
+  background-color: rgb(12, 122, 247);
 }
 
 .buttonDelete {
-  border: none;
-  border-radius: 3px;
-  background-color: rgb(169, 26, 26);
-  color: white;
+  font-size: 17px;
+  border-radius: 8px;
+
+  background-color: rgb(252, 146, 146);
+  color: black;
   padding: 10px 20px;
+}
+
+.buttonDelete:hover {
+  background-color: red;
+  font-size: 17px;
+}
+
+.checkbox {
+  height: 20px;
+  width: 20px;
 }
