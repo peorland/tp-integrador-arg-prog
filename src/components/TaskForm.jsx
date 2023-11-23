@@ -1,10 +1,15 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import TaskList from './TaskList';
 import './TaskForm.css';
 
 export default function TaskForm() {
   const [title, setTitle] = useState('');
   const [todos, setTodos] = useState([]);
+  const [warningMsg, setWarningMsg] = useState(false);
+
+  useEffect(() => {
+    alert('Ingrese una tarea por favor');
+  }, [warningMsg]);
 
   function handleChange(event) {
     const value = event.target.value;
@@ -13,15 +18,20 @@ export default function TaskForm() {
 
   function handleSubmit(e) {
     e.preventDefault();
-    const newTodo = {
-      id: crypto.randomUUID(),
-      title: title,
-      completed: false,
-    };
-    const temp = [...todos];
-    temp.push(newTodo);
-    setTodos(temp);
-    setTitle('');
+    if (!title) {
+      setWarningMsg(!warningMsg);
+      //alert('La tarea está vacia...');
+    } else {
+      const newTodo = {
+        id: crypto.randomUUID(),
+        title: title,
+        completed: false,
+      };
+      const temp = [...todos];
+      temp.push(newTodo);
+      setTodos(temp);
+      setTitle('');
+    }
   }
 
   function handleUpdate(id, value) {
